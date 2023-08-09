@@ -1,20 +1,23 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {RootNavigator} from 'modules/navigation/RootNavigator';
 
 function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>RACERGURU</Text>
-    </SafeAreaView>
+    <SafeAreaProvider style={styles.root}>
+      <GestureHandlerRootView style={styles.root}>
+        <RootNavigator />
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 }
 
 export default App;
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
