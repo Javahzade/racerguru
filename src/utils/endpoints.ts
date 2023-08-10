@@ -1,3 +1,3 @@
 export enum Endpoints {
-  BaseURL = 'http[s]://ergast.com/api',
+  BaseURL = 'https://ergast.com/api',
 }

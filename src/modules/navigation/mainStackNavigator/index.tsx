@@ -3,8 +3,10 @@ import {
   createStackNavigator,
   StackNavigationOptions,
 } from '@react-navigation/stack';
-import {RacerList} from 'views/racerList';
+import {DriverList} from 'views/driverList';
 import {MainStackParamList} from './types';
+import {DriverDetails} from 'views/driverDetails';
+import {RaceLaps} from 'views/raceLaps';
 
 const MainStack = createStackNavigator<MainStackParamList>();
 
@@ -15,8 +17,12 @@ const screenOptions: StackNavigationOptions = {
 
 export const MainStackNavigator: React.FC = () => {
   return (
-    <MainStack.Navigator screenOptions={screenOptions}>
-      <MainStack.Screen name="RacerList" component={RacerList} />
+    <MainStack.Navigator
+      screenOptions={screenOptions}
+      initialRouteName="DriverList">
+      <MainStack.Screen name="DriverList" component={DriverList} />
+      <MainStack.Screen name="DriverDetails" component={DriverDetails} />
+      <MainStack.Screen name="RaceLaps" component={RaceLaps} />
     </MainStack.Navigator>
   );
 };
