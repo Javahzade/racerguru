@@ -1,7 +1,11 @@
 import {StackScreenProps} from '@react-navigation/stack';
 
 export type MainStackParamList = {
-  RacerList: undefined;
+  DriverList: undefined;
+  DriverDetails: {
+    driverId: string;
+  };
+  RaceLaps: undefined;
 };
 
 export type MainStackScreenProps<TScreen extends keyof MainStackParamList> =

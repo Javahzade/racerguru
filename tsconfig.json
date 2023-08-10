@@ -12,6 +12,9 @@
       "@components/*": [
         "src/components/*"
       ],
+      "@models/*": [
+        "src/models/*"
+      ],
       "@modules/*": [
         "src/modules/*"
       ],
