@@ -1,12 +1,18 @@
 import {BackHeader} from 'components/BackHeader';
 import React, {memo} from 'react';
-import {FlatList, ListRenderItemInfo, StyleSheet, View} from 'react-native';
+import {
+  FlatList,
+  ListRenderItemInfo,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {RaceLapsVM} from './vm';
 import {RaceLapsTimingModel} from 'models/races';
 import {LapItem} from './components/LapItem';
 import {TableHeader} from 'views/driverList/components/TableHeader';
 
-const RaceLaps: React.FC<RaceLapsVM> = ({laps}) => {
+const RaceLaps: React.FC<RaceLapsVM> = ({raceInfo, laps}) => {
   const renderItem = React.useCallback(
     ({item}: ListRenderItemInfo<RaceLapsTimingModel>) => <LapItem {...item} />,
     [],
@@ -19,7 +25,11 @@ const RaceLaps: React.FC<RaceLapsVM> = ({laps}) => {
 
   return (
     <View style={styles.container}>
-      <BackHeader title="Race laps" />
+      <BackHeader title="Race laps">
+        <Text style={styles.raceInfoText}>
+          {raceInfo?.raceName} {raceInfo?.round} {raceInfo?.season}
+        </Text>
+      </BackHeader>
       <TableHeader headers={['Driver name', 'Position', 'Time']} />
       <FlatList
         data={laps}
@@ -44,5 +54,10 @@ const styles = StyleSheet.create({
   contentList: {
     flexGrow: 1,
     paddingVertical: 6,
+  },
+  raceInfoText: {
+    color: 'white',
+    fontWeight: '500',
+    marginRight: 12,
   },
 });
